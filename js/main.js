@@ -1,8 +1,20 @@
   /*----- constants -----*/
 const squareDisplay = {
   empty: 'white',
-  p1: 'red',
-  p2: "green",
+  1: 'red',
+  "-1": "green"
+}
+
+const squares = {
+    0: null,
+    1: null,
+    2: null,
+    3: null,
+    4: null,
+    5: null,
+    6: null,
+    7: null,
+    8: null
 }
 
   /*----- state variables -----*/
@@ -16,6 +28,17 @@ let msg = document.querySelector('#outcome-msg');
 
   /*----- event listeners -----*/
 function sqClicked(evt){
+  let currentSquare = evt.target.getAttribute('id');
+
+  //kicks us out if this square has already been clicked
+  if (squares[currentSquare] !=  null) return;
+
+  squares[currentSquare] = turn;
+  boardArr[currentSquare].style.backgroundColor = squareDisplay[turn];
+  turn*= -1;
+  console.log(squareDisplay.turn);
+  console.log(boardArr[currentSquare]);
+  //console.log(squares[currentSquare]);
   
 
 
@@ -27,11 +50,11 @@ boardArr.forEach(function(sq){
 
   /*----- functions -----*/
 function init(){
-  turn = "1";
+  turn = 1;
   outcome = null;
   //iterating thru the squares and setting the color to empty
   boardArr.forEach(function(unit){
-    console.log(unit);
+    //console.log(unit);
     unit.style.backgroundColor = squareDisplay.empty;
   });
 
@@ -51,7 +74,7 @@ function render(){
   }
 }
 
-  console.log(boardArr);
+  //console.log(boardArr);
   boardArr[8].textContent = "heyo";
 
 
