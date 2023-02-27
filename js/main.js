@@ -32,12 +32,17 @@ function sqClicked(evt){
 
   //kicks us out if this square has already been clicked
   if (squares[currentSquare] !=  null) return;
+  if (outcome != null) return;
 
   squares[currentSquare] = turn;
   boardArr[currentSquare].style.backgroundColor = squareDisplay[turn];
-  turn*= -1;
-  console.log(squareDisplay.turn);
-  console.log(boardArr[currentSquare]);
+
+
+  checkWinner()
+
+  turn*=-1;
+  //console.log(squareDisplay.turn);
+  //console.log(boardArr[currentSquare]);
   //console.log(squares[currentSquare]);
   
 
@@ -66,7 +71,7 @@ function render(){
   if(outcome != null){
     if(outcome == "1"){
       msg.textContent = "RED Wins!";
-    } else if (outcome == "2"){
+    } else if (outcome == "-1"){
       msg.textContent = "GREEN wins!";
     } else {
       msg.textContent = "Woah! it's a draw!";
@@ -74,8 +79,39 @@ function render(){
   }
 }
 
+//takes in any number of arguments - checks if any value is null and returns false otherwise checks if arguments are equal
+function areEqual(){
+  for (var i = 1; i< arguments.length; i++){
+     if (arguments[i] === null || arguments[i] !== arguments[i-1])
+        return false;
+  }
+  return true;
+}
+
+//check for one of 8 winnning conditions
+function checkWinner(){
+  if (areEqual(squares[0],squares[1],squares[2])){
+
+  } else if(){
+
+  } else if(){
+
+  } else if(){
+
+  } else if(){
+
+  } else if(){
+
+  } else if(){
+
+  } else if(){
+
+  }
+
+}
+
   //console.log(boardArr);
-  boardArr[8].textContent = "heyo";
+  //boardArr[8].textContent = "heyo";
 
 
 init();
