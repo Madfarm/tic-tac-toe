@@ -5,6 +5,7 @@ const squareDisplay = {
   "-1": "green"
 }
 
+//an object that shows who "owns" each square
 const squares = {
     0: null,
     1: null,
@@ -34,6 +35,7 @@ function sqClicked(evt){
   if (squares[currentSquare] !=  null) return;
   if (outcome != null) return;
 
+  //gives ownership of the square to the player who's turn it is
   squares[currentSquare] = turn;
   boardArr[currentSquare].style.backgroundColor = squareDisplay[turn];
 
@@ -79,7 +81,7 @@ function render(){
   }
 }
 
-//takes in any number of arguments - checks if any value is null and returns false otherwise checks if arguments are equal
+//takes in any number of arguments - checks if any value is null and returns false otherwise checks if all arguments are equal
 function areEqual(){
   for (var i = 1; i< arguments.length; i++){
      if (arguments[i] === null || arguments[i] !== arguments[i-1])
@@ -90,22 +92,34 @@ function areEqual(){
 
 //check for one of 8 winnning conditions
 function checkWinner(){
+  let exists = Object.values(squares).includes(null);
   if (areEqual(squares[0],squares[1],squares[2])){
-
-  } else if(){
-
-  } else if(){
-
-  } else if(){
-
-  } else if(){
-
-  } else if(){
-
-  } else if(){
-
-  } else if(){
-
+    outcome =  squares[0];
+    render();
+  } else if(areEqual(squares[3],squares[4],squares[5])){
+    outcome = squares[3];
+    render();
+  } else if(areEqual(squares[6],squares[7],squares[8])){
+    outcome = squares[6];
+    render();
+  } else if(areEqual(squares[0],squares[3],squares[6])){
+    outcome = squares[0];
+    render();
+  } else if(areEqual(squares[1],squares[4],squares[7])){
+    outcome = squares[1];
+    render();
+  } else if(areEqual(squares[2],squares[5],squares[8])){
+    outcome = squares[2];
+    render();
+  } else if(areEqual(squares[0],squares[4],squares[8])){
+    outcome = squares[0];
+    render();
+  } else if(areEqual(squares[2], squares[4], squares[6])){
+    outcome = squares[2];
+    render();
+  } else if(!exists){
+    outcome = "t";
+    render();
   }
 
 }
