@@ -24,3 +24,7 @@ html {
 #turn-display {
     font-size: 80px;
 }
+
+#outcome-msg {
+    text-align: center;
+}

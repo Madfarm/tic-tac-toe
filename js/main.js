@@ -26,6 +26,7 @@ let outcome;
 let boardArr = document.querySelectorAll('.square');
 let msg = document.querySelector('#outcome-msg');
 let turnEl = document.querySelector('#turn-display');
+let resetEl = document.querySelector('#reset');
 
 
   /*----- event listeners -----*/
@@ -57,10 +58,18 @@ boardArr.forEach(function(sq){
       sq.addEventListener('click', sqClicked);
 });
 
+resetEl.addEventListener('click', function(){
+  init()
+});
+
   /*----- functions -----*/
 function init(){
   turn = 1;
   outcome = null;
+
+  //clears the squares object so each square is owned by no one
+  Object.keys(squares).forEach(function(key){ squares[key] = null });
+
   //iterating thru the squares and setting the color to empty
   boardArr.forEach(function(unit){
     //console.log(unit);
