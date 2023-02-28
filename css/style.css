@@ -16,3 +16,11 @@ html {
     height: 25vmin;
     border: 1px solid gray
   }
+
+.turn {
+    text-align: center;
+}
+
+#turn-display {
+    font-size: 80px;
+}

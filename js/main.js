@@ -25,6 +25,7 @@ let outcome;
   /*----- cached elements  -----*/
 let boardArr = document.querySelectorAll('.square');
 let msg = document.querySelector('#outcome-msg');
+let turnEl = document.querySelector('#turn-display');
 
 
   /*----- event listeners -----*/
@@ -47,6 +48,7 @@ function sqClicked(evt){
   //console.log(boardArr[currentSquare]);
   //console.log(squares[currentSquare]);
   
+  render();
 
 
 }
@@ -70,6 +72,17 @@ function init(){
 
 function render(){
   //check if the game is in progress and it has ended, send a message to the user
+  renderOutcomeTxt();
+  renderTurn();
+}
+
+function renderTurn(){
+  let currentTurn = squareDisplay[turn];
+  turnEl.textContent = currentTurn;
+  turnEl.style.color = currentTurn;
+}
+
+function renderOutcomeTxt(){
   if(outcome != null){
     if(outcome == "1"){
       msg.textContent = "RED Wins!";
