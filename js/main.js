@@ -72,7 +72,6 @@ function init(){
 
   //iterating thru the squares and setting the color to empty
   boardArr.forEach(function(unit){
-    //console.log(unit);
     unit.style.backgroundColor = squareDisplay.empty;
   });
 
@@ -100,10 +99,11 @@ function renderOutcomeTxt(){
     } else {
       msg.textContent = "Woah! it's a draw!";
     }
-  }
+  } else msg.textContent = "";
+  //clears the text on reset
 }
 
-//takes in any number of arguments - checks if any value is null and returns false otherwise checks if all arguments are equal
+//takes in any number of arguments - checks if any value is null and returns false, otherwise checks if all arguments are equal
 function areEqual(){
   for (var i = 1; i< arguments.length; i++){
      if (arguments[i] === null || arguments[i] !== arguments[i-1])
@@ -145,9 +145,5 @@ function checkWinner(){
   }
 
 }
-
-  //console.log(boardArr);
-  //boardArr[8].textContent = "heyo";
-
 
 init();
