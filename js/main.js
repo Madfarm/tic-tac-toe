@@ -114,7 +114,7 @@ function areEqual(){
 
 //check for one of 8 winnning conditions
 function checkWinner(){
-  let exists = Object.values(squares).includes(null);
+  let squaresLeft = Object.values(squares).includes(null);
   if (areEqual(squares[0],squares[1],squares[2])){
     outcome =  squares[0];
     render();
@@ -139,7 +139,7 @@ function checkWinner(){
   } else if(areEqual(squares[2], squares[4], squares[6])){
     outcome = squares[2];
     render();
-  } else if(!exists){
+  } else if(!squaresLeft){
     outcome = "t";
     render();
   }
